@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Planning App FrontEnd</string>
+    <string name="to_be_filled">-</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_cover" />
+    <string name="dummy_activity">Dummy Activity</string>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:longClickable="true"
+    android:id="@+id/viewHolderBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/menuCover"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:contentDescription="@string/profile_cover"
+        android:src="@drawable/black_dot"
+        android:backgroundTint="@color/yellow"
+        android:padding="30dp"/>
+
+    <TextView
+        android:id="@+id/coverTitle"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="top|center"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="35sp"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>
