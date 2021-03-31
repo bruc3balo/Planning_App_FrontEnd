@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/gradient_list"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -17,8 +18,8 @@
         app:navigationIcon="@android:drawable/btn_radio"
         android:gravity="center_vertical"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/bottomNavViewPager"
+    <FrameLayout
+        android:id="@+id/bottomNavFrame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -29,7 +30,16 @@
         android:layout_height="wrap_content"
         android:elevation="12dp"
         android:padding="10dp"
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorColor="@color/indicatorColor"
+        app:tabGravity="fill"
+        android:overScrollMode="never"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/semiBlack"
+        app:tabInlineLabel="true"
+        app:tabIndicatorAnimationMode="elastic"
         android:layout_gravity="bottom"
-        android:id="@+id/bottomNavTabs"/>
+        android:background="@color/grey"
+        android:id="@+id/bottomNav"/>
 
 </LinearLayout>

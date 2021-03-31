@@ -7,4 +7,58 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_cover" />
     <string name="dummy_activity">Dummy Activity</string>
+    <string name="journals">Journals</string>
+    <string name="goals">Goals</string>
+    <string name="notes">Notes</string>
+    <string name="reminder">Reminder</string>
+    <string name="timetable">TimeTable</string>
+    <string name="todo">Todo</string>
+    <string name="summary">Summary</string>
+    <string name="settings">Settings</string>
+    <string name="grid">Grid</string>
+    <string name="drawer">Drawer</string>
+    <string name="tabs">Tabs</string>
+    <string name="bottom_nav">Bottom Navigation</string>
+    <string name="viewPager">View Pager</string>
+    <string name="drag_center_spot">Drag Center Spot</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="layout_pref">Layout Preferred</string>
+    <string name="selected_layout">Selected Layout</string>
+    <string name="layout">Layout</string>
+    <string name="layout_preference_category">Layout Preference Category</string>
+    <string name="theme">Theme</string>
+    <string name="theme_preference">Theme Preference</string>
+    <string name="network">Network</string>
+    <string name="network_preference">Network Preference</string>
+    <string name="back_up">Back up</string>
+    <string name="online_back_up">Online back up</string>
+    <string name="online_back_up_enabled">Online back up enabled</string>
+    <string name="online_back_up_disabled">Online back up disabled</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="item_on_todo_list">Item on todo list</string>
+    <string name="time">Time</string>
+    <string name="mon">mon</string>
+    <string name="tue">tue</string>
+    <string name="wed">wed</string>
+    <string name="thur">thu</string>
+    <string name="fri">fri</string>
+    <string name="sat">sat</string>
+    <string name="sun">sun</string>
+    <string name="description_of_goal">Description of goal</string>
+    <string name="activity">Activity</string>
+
 </resources>

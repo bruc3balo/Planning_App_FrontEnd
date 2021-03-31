@@ -1,4 +1,4 @@
-package com.example.planningappfrontend;
+package com.example.planningappfrontend.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,26 +9,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.planningappfrontend.R;
 
 import static com.example.planningappfrontend.MainActivity.GRID;
+import static com.example.planningappfrontend.MainActivity.pageIcons;
+import static com.example.planningappfrontend.MainActivity.pageTitles;
 
 
 public class MainPageGrid extends BaseAdapter {
 
-    private final String[] mainPageGridTitle = new String[]{GRID, GRID, GRID, GRID, GRID, GRID,GRID};
-    private final int[] mainPageIcons = new int[]{R.drawable.ic_person, R.drawable.ic_person, R.drawable.ic_person, R.drawable.ic_person, R.drawable.ic_person, R.drawable.ic_person,R.drawable.ic_person};
 
     public MainPageGrid() {
     }
 
     @Override
     public int getCount() {
-        return mainPageGridTitle.length;
+        return pageTitles.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return mainPageGridTitle[position];
+        return pageTitles[position];
     }
 
     @Override
@@ -45,9 +46,9 @@ public class MainPageGrid extends BaseAdapter {
         }
 
         TextView title = convertView.findViewById(R.id.title_row);
-        title.setText(mainPageGridTitle[position]);
+        title.setText(pageTitles[position]);
         ImageView icon = convertView.findViewById(R.id.icon_row);
-        Glide.with(parent.getContext()).load(mainPageIcons[position]).into(icon);
+        Glide.with(parent.getContext()).load(pageIcons[position]).into(icon);
 
         return convertView;
     }

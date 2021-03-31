@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainPageBg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_list"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -17,5 +19,88 @@
         app:title="Main Menu"
         app:navigationIcon="@android:drawable/btn_radio"
         android:gravity="center_vertical"/>
+
+    <Button
+        android:id="@+id/gridB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:onClick="showGrid"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/teal_700"
+        android:text="@string/grid"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/drawerB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/powderBlue"
+        android:text="@string/drawer"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:onClick="showDrawer"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/tabsB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/grey"
+        android:text="@string/tabs"
+        android:onClick="showTabs"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/bottomNavB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/black"
+        android:text="@string/bottom_nav"
+        android:textColor="@color/white"
+        android:onClick="showBottomNav"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/viewPagerB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="showViewPager"
+        android:layout_margin="15dp"
+        android:background="@drawable/search_bg"
+        android:text="@string/viewPager"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/dragCenterB"
+        android:onClick="showDragCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/orange"
+        android:text="@string/drag_center_spot"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
 </LinearLayout>

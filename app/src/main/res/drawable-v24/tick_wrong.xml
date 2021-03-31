@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="translucent">
+    <item
+        android:bottom="25dp"
+        android:drawable="@drawable/ic_cancel"
+        android:left="30dp"
+        android:right="5dp"
+        android:top="0dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/orange" />
+            <corners android:radius="30dp" />
+        </shape>
+        <ripple android:color="@color/green"/>
+    </item>
+
+    <item
+
+        android:drawable="@drawable/ic_tick"
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="30dp"
+        android:top="25dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/orange" />
+            <corners android:radius="30dp" />
+        </shape>
+        <ripple android:color="@color/black"/>
+    </item>
+</layer-list>

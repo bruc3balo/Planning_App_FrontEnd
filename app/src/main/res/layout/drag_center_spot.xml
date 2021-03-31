@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dragCenterSpot"
+    android:background="@drawable/gradient_list"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -18,154 +19,184 @@
         app:navigationIcon="@android:drawable/btn_radio"
         android:gravity="center_vertical"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/circle_bg"
-            android:padding="10dp"
-            android:src="@drawable/black_dot_big"
-            android:tint="@color/semiBlack"
-            android:backgroundTint="@color/orange"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dragConstrainLayout"
+            android:layout_width="400dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/textLeftTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textMidRight"
-            app:layout_constraintEnd_toStartOf="@id/textTopMid"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circle_bg"
+                android:padding="10dp"
+                android:src="@drawable/black_dot_big"
+                android:tint="@color/semiBlack"
+                android:backgroundTint="@color/orange"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textLeftTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="monospace"
+                android:layout_marginTop="50dp"
+                android:padding="10dp"
+                android:text="@string/journals"
+                android:drawablePadding="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textMidRight"
+                app:layout_constraintEnd_toStartOf="@id/textTopMid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableBottomCompat="@drawable/ic_book" />
 
 
-        <TextView
-            android:id="@+id/textTopRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textMidRight"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textTopMid"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textTopRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:padding="10dp"
+                android:text="@string/goals"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_marginTop="50dp"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                app:drawableBottomCompat="@drawable/ic_goal"
+                app:layout_constraintBottom_toTopOf="@+id/textMidRight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textTopMid"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textTopMid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textTopMid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="monospace"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:text="@string/notes"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:drawableBottomCompat="@drawable/ic_note"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textMidRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textMidRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:text="@string/reminder"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:drawableBottomCompat="@drawable/ic_clock_"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageButton"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textLeftMid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textLeftMid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:padding="10dp"
+                android:text="@string/timetable"
+                android:drawablePadding="10dp"
+                app:drawableBottomCompat="@drawable/ic_calendar"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textLeftBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textBottomMid"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textLeftMid" />
+            <TextView
+                android:id="@+id/textLeftBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="monospace"
+                android:layout_marginBottom="50dp"
+                android:padding="10dp"
+                android:text="@string/todo"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                app:drawableBottomCompat="@drawable/ic_checklist"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textBottomMid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLeftMid" />
 
-        <TextView
-            android:id="@+id/textBottomMid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+            <TextView
+                android:id="@+id/textBottomMid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="monospace"
+                app:drawableBottomCompat="@drawable/ic_report_"
+                android:padding="10dp"
+                android:text="@string/summary"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
-        <TextView
-            android:id="@+id/textRightBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="monospace"
-            android:padding="10dp"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textBottomMid"
-            app:layout_constraintTop_toBottomOf="@id/textMidRight" />
+            <TextView
+                android:id="@+id/textRightBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:drawableBottomCompat="@drawable/ic_setting"
+                android:fontFamily="monospace"
+                android:padding="10dp"
+                android:layout_marginBottom="50dp"
+                android:drawablePadding="10dp"
+                android:text="@string/settings"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textBottomMid"
+                app:layout_constraintTop_toBottomOf="@id/textMidRight"
+                app:drawableTint="@color/black" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

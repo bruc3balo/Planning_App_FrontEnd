@@ -1,0 +1,20 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="layout_entries">
+        <item>Grid</item>
+        <item>Drawer</item>
+        <item>Tabs</item>
+        <item>Bottom Navigation</item>
+        <item>View Pager</item>
+        <item>Drag Center Spot</item>
+    </string-array>
+
+    <string-array name="layout_values">
+        <item>grid</item>
+        <item>drawer</item>
+        <item>tabs</item>
+        <item>bottom_navigation</item>
+        <item>view_pager</item>
+        <item>drag_center_spot</item>
+    </string-array>
+</resources>

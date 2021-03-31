@@ -25,10 +25,14 @@
     <color name="thistle">#dec1d7</color>
     <color name="slateBlue">#5533bd</color>
     <color name="tomato">#ff544d</color>
-
+    <color name="indicatorColor">#799A9191</color>
     <color name="darkOrange">#ff9824</color>
     <color name="powderBlue">#c9daf8</color>
     <color name="gold">#ffd300</color>
 
     <color name="brown">#805116</color>
+    <color name="summer">#039BE5</color>
+    <color name="fall">#773B28</color>
+    <color name="winter">#6200EA</color>
+    <color name="spring">#00BFA5</color>
 </resources>

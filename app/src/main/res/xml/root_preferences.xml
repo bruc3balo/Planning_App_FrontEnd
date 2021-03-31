@@ -1,0 +1,61 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/layout_pref" app:key="@string/layout_preference_category">
+
+
+        <ListPreference
+            app:defaultValue="@string/bottom_nav"
+            app:entries="@array/layout_entries"
+            app:entryValues="@array/layout_entries"
+            app:key="@string/layout"
+            app:title="@string/selected_layout"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/theme" app:key="@string/theme_preference">
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/network" app:key="@string/network_preference">
+
+        <SwitchPreferenceCompat
+            app:key="@string/back_up"
+            app:title="@string/online_back_up"
+            app:defaultValue="false"
+            android:switchTextOff="@string/online_back_up_disabled"
+            android:switchTextOn="@string/online_back_up_enabled"
+            app:switchTextOn="@string/online_back_up_enabled"
+            app:switchTextOff="@string/online_back_up_disabled"/>
+
+    </PreferenceCategory>
+
+   <!-- <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+    </PreferenceCategory>-->
+
+</PreferenceScreen>
