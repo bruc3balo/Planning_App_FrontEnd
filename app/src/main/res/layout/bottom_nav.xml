@@ -39,7 +39,7 @@
         app:tabInlineLabel="true"
         app:tabIndicatorAnimationMode="elastic"
         android:layout_gravity="bottom"
-        android:background="@color/grey"
+        android:background="@color/semiWhite"
         android:id="@+id/bottomNav"/>
 
 </LinearLayout>

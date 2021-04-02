@@ -1,11 +1,10 @@
 package com.example.planningappfrontend.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -18,7 +17,6 @@ import com.example.planningappfrontend.R;
 import com.example.planningappfrontend.adapter.CalendarGridAdapter;
 import com.example.planningappfrontend.models.Events;
 
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,29 +26,30 @@ import java.util.Locale;
 
 public class CalendarCustom extends LinearLayout {
     private int DAYS_COUNT = 0;
-    int[] rainbow = new int[]{
-            R.color.summer,
-            R.color.fall,
-            R.color.winter,
-            R.color.spring
-    };
-
+    int[] rainbow = new int[]{R.color.summer, R.color.fall, R.color.winter, R.color.spring};
     int[] monthSeason = new int[]{2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2};
     LinearLayout header;
     Button btnToday;
     ImageButton btnPrev;
     ImageButton btnNext;
-    static TextView txtDateMonth,txtDisplayDate,txtDateYear;
-    GridView gridView;
+    @SuppressLint("StaticFieldLeak")
+    static TextView txtDateMonth, txtDisplayDate, txtDateYear;
+    static GridView gridView;
     public static final int MAX_CALENDAR_DAYS = 42;
-    Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+    Calendar todayCalendar = Calendar.getInstance(Locale.ENGLISH);
     Context context;
     static SimpleDateFormat dateFormat = new SimpleDateFormat("dd", Locale.ENGLISH);
     static SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
     static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.ENGLISH);
-    CalendarGridAdapter calendarGridAdapter;
-    List<Date> dates = new ArrayList<>();
-    List<Events> events = new ArrayList<>();
+    static CalendarGridAdapter calendarGridAdapter;
+    static List<Date> dates = new ArrayList<>();
+    static List<Events> events = new ArrayList<>();
+
+    String currentDate = dateFormat.format(todayCalendar.getTime());
+    String currentMonth = monthFormat.format(todayCalendar.getTime());
+    String currentYear = yearFormat.format(todayCalendar.getTime());
+
+    public static Calendar dateSelected;
 
     public CalendarCustom(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -61,6 +60,7 @@ public class CalendarCustom extends LinearLayout {
     public CalendarCustom(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
+        assignUiElements();
     }
 
     public CalendarCustom(Context context) {
@@ -79,25 +79,33 @@ public class CalendarCustom extends LinearLayout {
         txtDisplayDate = findViewById(R.id.date_display_date);
 
         btnToday = findViewById(R.id.date_display_today);
-        btnToday.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToToday(Calendar.getInstance());
-            }
-        });
-        btnPrev.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) { calendar.add(Calendar.MONTH, -1);setUpCalendar();setBlackText(); }
-        });
+        btnToday.setOnClickListener(v -> goToToday(Calendar.getInstance()));
+        btnPrev.setOnClickListener(v -> previousArrow(todayCalendar));
 
-        btnNext.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) { calendar.add(Calendar.MONTH, 1);setUpCalendar();setBlackText(); }
-        });
+        btnNext.setOnClickListener(v -> nextArrow(todayCalendar));
         gridView = findViewById(R.id.calendar_grid);
-        setUpCalendar();
+        setUpCalendar(todayCalendar, getContext());
         setSeasonColor();
-        goToToday(calendar);
+        goToToday(todayCalendar);
+    }
+
+    private void previousArrow(Calendar calendar) {
+        calendar.add(Calendar.MONTH, -1);
+        String currentDate = dateFormat.format(calendar.getTime());
+        String currentMonth = monthFormat.format(calendar.getTime());
+        String currentYear = yearFormat.format(calendar.getTime());
+
+        setUpCalendar(calendar, getContext());
+
+    }
+
+    private void nextArrow(Calendar calendar) {
+        calendar.add(Calendar.MONTH, 1);
+        String currentDate = dateFormat.format(calendar.getTime());
+        String currentMonth = monthFormat.format(calendar.getTime());
+        String currentYear = yearFormat.format(calendar.getTime());
+
+        setUpCalendar(calendar, getContext());
     }
 
     private void initControl(Context context, AttributeSet attrs) {
@@ -130,18 +138,10 @@ public class CalendarCustom extends LinearLayout {
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        calendarGridAdapter = new CalendarGridAdapter(context, dates, events);
-        gridView.setAdapter(calendarGridAdapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.LTGRAY);
-            }
-        });
-
+        setUpCalendar(calendar,getContext());
     }
 
-    private void setUpCalendar() {
+    private static void setUpCalendar(Calendar calendar, Context context) {
         String currentDate = dateFormat.format(calendar.getTime());
         String currentMonth = monthFormat.format(calendar.getTime());
         String currentYear = yearFormat.format(calendar.getTime());
@@ -163,19 +163,21 @@ public class CalendarCustom extends LinearLayout {
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        calendarGridAdapter = new CalendarGridAdapter(context, dates, events);
+        calendarGridAdapter = new CalendarGridAdapter(context, dates, events,calendar);
         gridView.setAdapter(calendarGridAdapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.LTGRAY);
-            }
-        });
 
+        setDateSelected(calendar);
+
+        System.out.println("Calendar set up with date : " + calendar.getTime().toString());
     }
 
-    public static void receiveDates(Date date) {
-        setCheckDate(date);
+    public static void receiveDates(Calendar calendar, Context context) {
+        setCheckDate(calendar.getTime());
+        reloadCalendarWithDate(calendar, context);
+    }
+
+    private static void reloadCalendarWithDate(Calendar calendar, Context context) {
+        setUpCalendar(calendar, context);
     }
 
     private static void setBlackText() {
@@ -198,16 +200,26 @@ public class CalendarCustom extends LinearLayout {
         Calendar todayDate = Calendar.getInstance();
         if (monthFormat.format(date).equals(monthFormat.format(todayDate.getTime())) && yearFormat.format(date).equals(yearFormat.format(todayDate.getTime())) && dateFormat.format(date).equals(dateFormat.format(todayDate.getTime()))) {
             setRedText();
+            System.out.println("Showing event today");
+        } else {
+            setBlackText();
         }
         System.out.println("Showing event" + dateFormat.format(date) + monthFormat.format(date) + yearFormat.format(date));
     }
 
     private void setSeasonColor() {
-        int month = calendar.get(Calendar.MONTH);
+        int month = todayCalendar.get(Calendar.MONTH);
         int season = monthSeason[month];
         int color = rainbow[season];
-
         header.setBackgroundColor(getResources().getColor(color));
     }
 
+
+    public static Calendar getDateSelected() {
+        return dateSelected;
+    }
+
+    public static void setDateSelected(Calendar dateSelected) {
+        CalendarCustom.dateSelected = dateSelected;
+    }
 }

@@ -44,6 +44,7 @@ public class ReminderFragment extends Fragment {
 
         View reminderIndicator1 = v.findViewById(R.id.reminderIndicator1), reminderIndicator2 = v.findViewById(R.id.reminderIndicator2);
         TextView sun = v.findViewById(R.id.sunRv), mon = v.findViewById(R.id.monRv), tue = v.findViewById(R.id.tueRv), wed = v.findViewById(R.id.wedRv), thur = v.findViewById(R.id.thurRv), fri = v.findViewById(R.id.friRv), sat = v.findViewById(R.id.satRv);
+
         sun.setOnClickListener(v1 -> {
             sunb = !sunb;
             if (sunb) {
@@ -56,7 +57,7 @@ public class ReminderFragment extends Fragment {
         });
         mon.setOnClickListener(v2 ->{
             monb = !monb;
-            if (sunb) {
+            if (monb) {
                 mon.setBackground(getResources().getDrawable(R.drawable.circle_day_bg_selected));
                 mon.setTextColor(Color.WHITE);
             } else {
@@ -77,7 +78,7 @@ public class ReminderFragment extends Fragment {
         });
         wed.setOnClickListener(v4 -> {
             wedb = !wedb;
-            if (tueb) {
+            if (wedb) {
                 wed.setBackground(getResources().getDrawable(R.drawable.circle_day_bg_selected));
                 wed.setTextColor(Color.WHITE);
             } else {
@@ -88,7 +89,7 @@ public class ReminderFragment extends Fragment {
 
         thur.setOnClickListener(v5 -> {
             thurb = !thurb;
-            if (tueb) {
+            if (thurb) {
                 thur.setBackground(getResources().getDrawable(R.drawable.circle_day_bg_selected));
                 thur.setTextColor(Color.WHITE);
             } else {
@@ -96,12 +97,12 @@ public class ReminderFragment extends Fragment {
                 thur.setTextColor(Color.BLACK);
             }
         });
-
         fri.setOnClickListener(v6 -> {
             frib = !frib;
-            if (tueb) {
+            if (frib) {
                 fri.setBackground(getResources().getDrawable(R.drawable.circle_day_bg_selected));
                 fri.setTextColor(Color.WHITE);
+
             } else {
                 fri.setBackground(getResources().getDrawable(R.drawable.circle_day_bg));
                 fri.setTextColor(Color.BLACK);

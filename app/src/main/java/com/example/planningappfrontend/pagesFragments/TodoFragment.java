@@ -59,7 +59,14 @@ public class TodoFragment extends Fragment {
         View lineView = v.findViewById(R.id.lineView);
 
         TextView todoText = v.findViewById(R.id.todoText);
-        todoText.setOnClickListener(v12 -> animate(lineView, lineView.getVisibility() == View.GONE));
+        todoText.setOnClickListener(v12 -> {
+            System.out.println("alpha is : "+lineView.getAlpha());
+            if (lineView.getAlpha() == 1.0) {
+                animate(lineView, false);
+            } else {
+                animate(lineView, true);
+            }
+        });
 
         ImageButton todoStatus = v.findViewById(R.id.todoStatus);
         todoStatus.setOnClickListener(v1 -> chooseStatus(todoStatus));
@@ -114,26 +121,26 @@ public class TodoFragment extends Fragment {
         return v;
     }
 
-    static void animate(View iv, boolean in) {
+    private void animate(View iv, boolean in) {
 
         float min;
         float max;
+
         if (in) {
             min = 0.0f;
             max = 1.0f;
-
         } else {
             min = 1.0f;
             max = 0.0f;
         }
 
-        System.out.println("visible " + in);
+        System.out.println("visible " + in + " alpha : "+max);
 
         AlphaAnimation animation1 = new AlphaAnimation(min, max);
 
         animation1.setDuration(1500);
         animation1.setStartOffset(50);
-        animation1.setFillAfter(!in);
+       // animation1.setFillAfter(!in);
         iv.startAnimation(animation1);
     }
 

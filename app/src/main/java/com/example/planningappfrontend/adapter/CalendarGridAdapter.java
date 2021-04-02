@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,20 +23,24 @@ import java.util.List;
 import java.util.Locale;
 
 public class CalendarGridAdapter extends ArrayAdapter<Date> {
-    private LayoutInflater inflater;
-    private List<Date> dates;
-    private List<Events> events;
+    private final LayoutInflater inflater;
+    private final List<Date> dates;
+    private final List<Events> events;
     Calendar currentDate = Calendar.getInstance(Locale.ENGLISH);
     int count = 0;
+    Calendar selectedDate;
+    View selectedPositionView;
 
-    public CalendarGridAdapter(Context context, List<Date> dates, List<Events> events) {
+
+    public CalendarGridAdapter(Context context, List<Date> dates, List<Events> events, Calendar selectedDate) {
         super(context, R.layout.custom_calendar_day);
         this.dates = dates;
         this.events = events;
+        this.selectedDate = selectedDate;
         inflater = LayoutInflater.from(context);
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "UseCompatLoadingForDrawables"})
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -57,37 +62,72 @@ public class CalendarGridAdapter extends ArrayAdapter<Date> {
         final int currentDateN = currentDate.get(Calendar.DATE);
 
         TextView dayNumber = null;
+        TextView grid_date_event_count = null;
+        LinearLayout eventNumberContainer = null;
 
         View view = convertView;
         if (view == null) {
             view = inflater.inflate(R.layout.grid_row_cal, null);
             dayNumber = view.findViewById(R.id.grid_date);
+            grid_date_event_count = view.findViewById(R.id.grid_date_event_count);
+            eventNumberContainer = view.findViewById(R.id.eventNumberContainer);
         }
 
         view.setBackgroundColor(Color.WHITE);
 
-        if (view != null) {
-            setCalendarCurrentMonthUi(currentYear == displayYear, displayMonth == currentMonth, dateCalendar.get(Calendar.DATE) == currentDate.get(Calendar.DATE), currentDate.get(Calendar.DAY_OF_WEEK) == dateCalendar.get(Calendar.DAY_OF_WEEK), view);
-        }
+
+
+        setCalendarCurrentMonthUi(currentYear == displayYear, displayMonth == currentMonth, dateCalendar.get(Calendar.DATE) == currentDate.get(Calendar.DATE), currentDate.get(Calendar.DAY_OF_WEEK) == dateCalendar.get(Calendar.DAY_OF_WEEK), view);
 
         if (dayNumber != null) {
             setTodayUi(displayMonth == currentMonth, displayYear == currentYear, dayNumber);
             dayNumber.setText(String.valueOf(DayNo));
-            dayNumber.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    CalendarCustom.receiveDates(dateCalendar.getTime());
+            dayNumber.setOnClickListener(v -> clickDate(dateCalendar, (TextView) v));
+            String substring = String.valueOf(position).substring(String.valueOf(position).length() - 1);
+           ifEvenShow(substring,eventNumberContainer);
+            if (selectedDate != null) {
+                if (selectedDate.getTime().equals(monthDate)) {
+                    setSelectedPositionView(view);
+                     view.setBackgroundColor(Color.WHITE);
+                     dayNumber.setTextColor(Color.WHITE);
+                     dayNumber.setBackground(getContext().getResources().getDrawable(R.drawable.circle_day_bg_selected));
+                    System.out.println("selected date for view is "+selectedDate.getTime() +" for position : "+position);
+
+
                 }
-            });
+            }
         }
 
         return view;
     }
 
+    private void ifEvenShow (String substring, ViewGroup viewGroup) {
+        if (substring.equals(String.valueOf(2)) || substring.equals("4")  || substring.equals("6") || substring.equals("8") || substring.equals("0")) {
+            viewGroup.setVisibility(View.GONE);
+        } else {
+            viewGroup.setVisibility(View.VISIBLE);
+        }
+    }
 
+    private void clickDate(Calendar dateCalendar, TextView textView) {
+        CalendarCustom.receiveDates(dateCalendar, getContext());
+        textView.setTextColor(Color.RED);
+        textView.setBackgroundColor(Color.DKGRAY);
+    }
+
+
+    public View getSelectedPositionView() {
+        return selectedPositionView;
+    }
+
+    public void setSelectedPositionView(View selectedPositionView) {
+        this.selectedPositionView = selectedPositionView;
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void setCalendarCurrentMonthUi(boolean sameYear, boolean sameMonth, boolean sameDate, boolean sameDay, View view) {
-        if (sameYear && sameMonth && sameDate && sameDay) {
-            view.setBackgroundColor(Color.LTGRAY);
+        if (sameYear && sameMonth && sameDate && sameDay) { //today
+            view.setBackgroundColor(Color.TRANSPARENT);
             count++;
             System.out.println(count + " counting");
         } else {

@@ -468,80 +468,84 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             public void onTabSelected(TabLayout.Tab tab) {
                 tab.setIcon(pageIcons[tab.getPosition()]);
                 fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), getFragmentFromPosition(tab.getPosition())).commit();
-                switch (tab.getPosition()) {
-                    default:
-                    case 0:
-                        //toolbar.setBackgroundColor(ContextCompat.getColor(Home.this, R.color.colorAccent));
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiBlack));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.semiBlack));
-
-                        }
-
-                        //fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-                    case 1:
-                        // toolbar.setBackgroundColor(ContextCompat.getColor(Home.this, R.color.colorHover));
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, android.R.color.darker_gray));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(android.R.color.darker_gray));
-                        }
-
-                        // fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-                    case 2:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiGray));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.semiGray));
-                        }
-
-                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-                    case 3:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.semiWhite));
-                        }
-
-                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-
-                    case 4:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.green));
-                        }
-
-                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-
-                    case 5:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.yellow));
-                        }
-
-                        // fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-
-                    case 6:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.blue));
-                        }
-
-                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
-                        break;
-
-                    case 7:
-                        bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            getWindow().setStatusBarColor(getColor(R.color.black));
-                        }
-
-
-                        break;
+                bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    getWindow().setStatusBarColor(getColor(R.color.black));
                 }
+//                switch (tab.getPosition()) {
+//                    default:
+//                    case 0:
+//                        //toolbar.setBackgroundColor(ContextCompat.getColor(Home.this, R.color.colorAccent));
+//                       // bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiBlack));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.semiBlack));
+////
+////                        }
+//
+//                        //fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//                    case 1:
+//                        // toolbar.setBackgroundColor(ContextCompat.getColor(Home.this, R.color.colorHover));
+//                      //  bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, android.R.color.darker_gray));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(android.R.color.darker_gray));
+////                        }
+//
+//                        // fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//                    case 2:
+//                       // bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiGray));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.semiGray));
+////                        }
+//
+//                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//                    case 3:
+//                     //   bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.semiWhite));
+////                        }
+//
+//                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//
+//                    case 4:
+//                      //  bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.green));
+////                        }
+//
+//                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//
+//                    case 5:
+//                      //  bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.yellow));
+////                        }
+//
+//                        // fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//
+//                    case 6:
+//                      //  bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.blue));
+////                        }
+//
+//                        //  fragmentManager.beginTransaction().replace(bottomNavFrame.getId(), new DummyFragment()).commit();
+//                        break;
+//
+//                    case 7:
+//                      //  bottomTab.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.semiWhite));
+////                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+////                            getWindow().setStatusBarColor(getColor(R.color.black));
+////                        }
+//
+//
+//                        break;
+//                }
             }
 
             @Override
